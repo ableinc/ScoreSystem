@@ -37,7 +37,7 @@ const post = async (req) => {
     created_at: new Date().toISOString()
   })
   // Return success message
-  return { message: "Successfully created new user.", status: 204 }
+  return { message: "Successfully created new user.", status: 200 }
 }
 
 module.exports = post

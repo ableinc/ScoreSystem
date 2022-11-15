@@ -57,7 +57,7 @@ The scenario is such: A user (not an automated bot) is creating a new account. T
 
 ## Results
 
-Running this, as is, should result in 2 "Account creation failures" and 1 success. Use this to measure against any changes you make.
+Running this, as is, should result in 2 "Account creation" failures and 1 success. Use this to measure against any changes you make.
 
 ```bash
 API Response:  {
@@ -80,7 +80,7 @@ API Response:  {
     noteFromDeveloper: 'This is a parody account.'
   }
 }
-API Response:  { message: 'Successfully created new user.', status: 204 }
+API Response:  { message: 'Successfully created new user.', status: 200 }
 ```
 
 ## Notes
