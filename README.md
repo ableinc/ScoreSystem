@@ -45,7 +45,11 @@ The database in this example can be found in the ```db.json``` file. This databa
 
 ## Similar Characters JSON
 
-The ```similarCharacters.json``` JSON is a very simple key value pairing of similar letters and numbers, commonly used on the internet. You can add to this - replacing null values is important. The algorithm doesn't utilize this as much as it could, but further iterations of the code could include full utilization.
+The ```similarCharacters.json``` file is a very simple key value pairing of similar letters and numbers, commonly used on the internet. You can add to this - replacing null values is important. The algorithm doesn't utilize this as much as it could, but further iterations of the code could include full utilization.
+
+## Client Data JSON
+
+The ```clientData.json``` file is an array of client payload data. This mock client payload data is suppose to mimic a real account creation request, with a few properties removed. If you'd like to experiment with new usernames, please copy an existing object, update it and add it to the array.
 
 ## The Scenario
 
