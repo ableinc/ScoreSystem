@@ -118,4 +118,4 @@ Each character in the username is valued at 2 points (defined by ```this.charVal
 
 ## Changelog
 
-November 15th 2022 - Elon Musk will allow verified parody accounts, but they must explicitly say "PARODY" in their name and bio. The ```ALLOW_PARODY_LABEL``` environment variable will allow you to toggle between strict or free mode. Strict mode = ```ALLOW_PARODY_LABEL=false``` & Free mode = ```ALLOW_PARODY_LABEL=true```.
+- ***November 15th 2022*** - Elon Musk will allow verified parody accounts, but they must explicitly say "PARODY" in their name and bio. The ```ALLOW_PARODY_LABEL``` environment variable will allow you to toggle between strict or free mode. Strict mode = ```ALLOW_PARODY_LABEL=false``` & Free mode = ```ALLOW_PARODY_LABEL=true```.
