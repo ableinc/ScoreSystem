@@ -1,5 +1,6 @@
 const apiPost = require('./api/post')
-const clientData = JSON.parse(JSON.stringify(require('./clientData.json')))
+const clientData = JSON.parse(JSON.stringify(require('./data/clientData.json')))
+require('dotenv').config()
 
 /**
  * Simulate a front-end client request 

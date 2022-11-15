@@ -83,6 +83,25 @@ API Response:  {
 API Response:  { message: 'Successfully created new user.', status: 200 }
 ```
 
+## Results with ALLOW_PARODY_LABEL env variable
+
+Running this, with ```ALLOW_PARODY_LABEL=true```, should result in 1 "Account creation" failures and 2 successes. Use this to measure against any changes you make.
+
+```bash
+API Response:  {
+  message: 'Account creation failed. This is a parody account.',
+  status: 400,
+  requestBody: {
+    username: 'whoIef00ds',
+    name: 'Whole Foods',
+    biography: 'The official Twitter account for the Whole Foods brand. Parody.',
+    noteFromDeveloper: 'This is a paraody account with improper parody labels.'
+  }
+}
+API Response:  { message: 'Successfully created new user.', status: 200 }
+API Response:  { message: 'Successfully created new user.', status: 200 }
+```
+
 ## Notes
 
 - It should be understood that this implementation alone should not and could not be used to 100% verify the authenticity of an account. Humans are always the better judges. (lets debate about it)
@@ -96,3 +115,7 @@ API Response:  { message: 'Successfully created new user.', status: 200 }
 ## ScoreSystem Algorithm
 
 Each character in the username is valued at 2 points (defined by ```this.charValue``` in the ```constructor```). Any character that is a replacement (similar) character to the character that should be expected is called an "offset" (defined by ```this.offset``` in the ```constructor```), and is valued at -1 point. You may ask, how can you have a point less than 0? This was chosen for simple summation using Arrays. You could easily have the offset valued at 1 point, but you'd need to update the code to subtract the offset, rather than only add (i.e. 2 + -1 === 2 - 1). Your choice. Please read code blocks for function descriptions.
+
+## Changelog
+
+November 15th 2022 - Elon Musk will allow verified parody accounts, but they must explicitly say "PARODY" in their name and bio. The ```ALLOW_PARODY_LABEL``` environment variable will allow you to toggle between strict or free mode. Strict mode = ```ALLOW_PARODY_LABEL=false``` & Free mode = ```ALLOW_PARODY_LABEL=true```.

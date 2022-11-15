@@ -1,0 +1,22 @@
+{
+  "name": "scoresystem",
+  "version": "1.0.0",
+  "description": "A verified twitter account parody detection tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ableinc/ScoreSystem.git"
+  },
+  "author": "Jaylen Douglas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ableinc/ScoreSystem/issues"
+  },
+  "homepage": "https://github.com/ableinc/ScoreSystem#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}

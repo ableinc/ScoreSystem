@@ -1,7 +1,7 @@
 const db = JSON.parse(JSON.stringify(require('./db.json')))
 const getApi = require('./get')
 const { validate } = require('./helper')
-const ScoreSystem = require('../scoreSystem')
+const ScoreSystem = require('../algorithm/scoreSystem')
 
 /**
  * Simulate a post endpoint in a restful API
@@ -24,7 +24,7 @@ const post = async (req) => {
 
   // Check if fake account
   const scoreSystem = new ScoreSystem(getApi)
-  const parodyAccountScore = await scoreSystem.evaluate(req.body.username)
+  const parodyAccountScore = await scoreSystem.evaluate(req.body.username, req.body.name, req.body.biography)
   if (parodyAccountScore[0]) {
     return { message: 'Account creation failed. This is a parody account.', status: 400, requestBody: req.body }
   }

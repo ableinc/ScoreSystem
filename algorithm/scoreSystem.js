@@ -1,4 +1,4 @@
-const similarCharacters = require('./similarCharacters.json')
+const similarCharacters = require('../data/similarCharacters.json')
 
 class ScoreSystem {
   constructor (api) {
@@ -6,6 +6,7 @@ class ScoreSystem {
     this.charValue = 2
     this.offset = -1
     this.similarChars = JSON.parse(JSON.stringify(similarCharacters))
+    this.allowParodyLabels = Boolean(process.env.ALLOW_PARODY_LABEL === 'true')
   }
 
   /**
@@ -141,7 +142,18 @@ class ScoreSystem {
    * @param {String} username A username
    * @returns {Array} Matching accounts
    */
-  async evaluate(username) {
+  async evaluate(username, name, description) {
+    if (this.allowParodyLabels && !name && !description) {
+      return [username]
+    }
+    name = name.toLowerCase()
+    description = description.toLowerCase()
+    if (this.allowParodyLabels && name.includes('parody') && description.includes('parody')) {
+      return []
+    }
+    if (this.allowParodyLabels && username.toLowerCase().includes('parody')) {
+      return []
+    }
     const similar = await this.gatherScores(username)
     const similarScores = this.compareToSimilar(username, similar.map(item => item.username ))
     return similarScores.filter(item => item.parodyAccount === true)
