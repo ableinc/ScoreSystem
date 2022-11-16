@@ -15,13 +15,13 @@ Below is the payload we'll be using for our demonstration. Based on the ```noteF
     username: "whoIef00ds",
     name: "Whole Foods",
     biography: "The official Twitter account for the Whole Foods brand. Parody.",
-    noteFromDeveloper: 'This is a paraody account.'
+    noteFromDeveloper: "This is a paraody account with improper parody labels."
 },
 {
     username: "j0hn50n4ndjohnson",
-    name: "Johsnon & Johnson",
+    name: "Johsnon & Johnson Parody",
     biography: "The official Twitter account for Johnson & Johnson. A global leader in healthcare. Parody.",
-    noteFromDeveloper: 'This is a parody account.'
+    noteFromDeveloper: "This is a parody account with proper parody labels."
 },
 {
     username: "foodlionus",
@@ -55,7 +55,7 @@ The ```clientData.json``` file is an array of client payload data. This mock cli
 
 The scenario is such: A user (not an automated bot) is creating a new account. This user has malicious intent and is trying to create a parody account to impersonate a real, verified (Twitter termoniolgy) business. The ScoreSystem algorithm will use the information provided by the user and try to determine if the account is real or a parody.
 
-## Results
+## Results - Strict mode
 
 Running this, as is, should result in 2 "Account creation" failures and 1 success. Use this to measure against any changes you make.
 
@@ -67,7 +67,7 @@ API Response:  {
     username: 'whoIef00ds',
     name: 'Whole Foods',
     biography: 'The official Twitter account for the Whole Foods brand. Parody.',
-    noteFromDeveloper: 'This is a paraody account.'
+    noteFromDeveloper: 'This is a paraody account with improper parody labels.'
   }
 }
 API Response:  {
@@ -75,15 +75,15 @@ API Response:  {
   status: 400,
   requestBody: {
     username: 'j0hn50n4ndjohnson',
-    name: 'Johsnon & Johnson',
+    name: 'Johsnon & Johnson Parody',
     biography: 'The official Twitter account for Johnson & Johnson. A global leader in healthcare. Parody.',
-    noteFromDeveloper: 'This is a parody account.'
+    noteFromDeveloper: 'This is a parody account with proper parody labels.'
   }
 }
 API Response:  { message: 'Successfully created new user.', status: 200 }
 ```
 
-## Results with ALLOW_PARODY_LABEL env variable
+## Results with ALLOW_PARODY_LABEL env variable - Free mode
 
 Running this, with ```ALLOW_PARODY_LABEL=true```, should result in 1 "Account creation" failures and 2 successes. Use this to measure against any changes you make.
 
@@ -105,7 +105,7 @@ API Response:  { message: 'Successfully created new user.', status: 200 }
 ## Notes
 
 - It should be understood that this implementation alone should not and could not be used to 100% verify the authenticity of an account. Humans are always the better judges. (lets debate about it)
-- This algorithm does not take into account many factors and simply weighs the possbility on the usernames provided and stored in the database.
+- This algorithm only takes into account a factors and simply calculates the probability that a "new" username is a parody of a real account username.
 - Feel free to use this and expand on it, but please give credit where credit is due.
 - It would not make sense to implement this at the Sign Up/Register view, as this is a heavily blocking implementation. You'd want to have this run as a cron service.
 - You may notice redundancy, but doing this after my morning meetings, 3 cups of coffee and an hour break during work, I decided to do this and not do it perfectly. Have at it with your own implementation :)
